@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg viewBox="0 0 1120 480" xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs id="defs_block">
+    <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252">
+      <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2" />
+    </filter>
+  </defs>
+  <title>blockdiag</title>
+  <desc>// vi: set ts=4 sw=4 sts=0 et:
+
+
+blockdiag {
+    default_shape = roundedbox;
+    node_width = 200;
+    node_height = 60;
+
+
+    setup [ label = "良いコミットと悪いコミットを指定" ];
+    check [ shape = "diamond", height = 100 ]
+    check [ label = "良いコミットと悪いコミットの間にコミットがあるかどうか確認" ];
+    checkout [ label = "良いコミットと悪いコミットの中間のコミットをチェックアウト" ];
+    build [ label = "make &amp;&amp; make modules_install" ];
+
+    START -&gt; setup;
+    setup -&gt; check;
+    check -&gt; checkout [ label = "ある場合" ];
+    checkout -&gt; build;
+    build -&gt; boot -&gt; test;
+    test -&gt; check [ label = "結果を通知" ];
+    check -&gt; END [ label = "ない場合" ];
+
+    group {
+        orientation = portrait;
+        color = "#FFFFFF";
+        START;
+        group {
+            label = "git bisect"
+            fontsize = 16;
+            color = lightblue;
+            setup;
+            check;
+            checkout;
+        }
+    }
+
+
+    group {
+        label = "Test Script";
+        fontsize = 16;
+        color = "#77FF77";
+        height = 100;
+        build;
+        boot;
+        test;
+        group {
+            label = qemu;
+            shape = line;
+            style = dashed;
+            color = "#7777FF";
+            boot;
+            test;
+        }
+    }
+
+}
+</desc>
+  <rect fill="rgb(255,255,255)" height="420" style="filter:url(#filter_blur)" width="216" x="56" y="30" />
+  <rect fill="rgb(173,216,230)" height="320" style="filter:url(#filter_blur)" width="216" x="56" y="130" />
+  <rect fill="rgb(119,255,119)" height="80" style="filter:url(#filter_blur)" width="744" x="320" y="370" />
+  <path d="M 75 46 L 259 46 A8,8 0 0 1 267 54 L 267 98 A8,8 0 0 1 259 106 L 75 106 A8,8 0 0 1 67 98 L 67 54 A8,8 0 0 1 75 46" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 75 146 L 259 146 A8,8 0 0 1 267 154 L 267 198 A8,8 0 0 1 259 206 L 75 206 A8,8 0 0 1 67 198 L 67 154 A8,8 0 0 1 75 146" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <polygon fill="rgb(0,0,0)" points="167,238 275,296 167,354 59,296 167,238" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 75 386 L 259 386 A8,8 0 0 1 267 394 L 267 438 A8,8 0 0 1 259 446 L 75 446 A8,8 0 0 1 67 438 L 67 394 A8,8 0 0 1 75 386" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 339 266 L 523 266 A8,8 0 0 1 531 274 L 531 318 A8,8 0 0 1 523 326 L 339 326 A8,8 0 0 1 331 318 L 331 274 A8,8 0 0 1 339 266" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 339 386 L 523 386 A8,8 0 0 1 531 394 L 531 438 A8,8 0 0 1 523 446 L 339 446 A8,8 0 0 1 331 438 L 331 394 A8,8 0 0 1 339 386" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 603 386 L 787 386 A8,8 0 0 1 795 394 L 795 438 A8,8 0 0 1 787 446 L 603 446 A8,8 0 0 1 595 438 L 595 394 A8,8 0 0 1 603 386" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 867 386 L 1051 386 A8,8 0 0 1 1059 394 L 1059 438 A8,8 0 0 1 1051 446 L 867 446 A8,8 0 0 1 859 438 L 859 394 A8,8 0 0 1 867 386" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <path d="M 72 40 L 256 40 A8,8 0 0 1 264 48 L 264 92 A8,8 0 0 1 256 100 L 72 100 A8,8 0 0 1 64 92 L 64 48 A8,8 0 0 1 72 40" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="149" y="74">START</text>
+  <path d="M 72 140 L 256 140 A8,8 0 0 1 264 148 L 264 192 A8,8 0 0 1 256 200 L 72 200 A8,8 0 0 1 64 192 L 64 148 A8,8 0 0 1 72 140" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="76" y="175">良いコミットと悪いコミットを指定</text>
+  <polygon fill="rgb(255,255,255)" points="164,232 272,290 164,348 56,290 164,232" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="115" y="278">良いコミットと悪い</text>
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="115" y="289">コミットの間にコミ</text>
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="115" y="300">ットがあるかどうか</text>
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="153" y="312">確認</text>
+  <path d="M 72 380 L 256 380 A8,8 0 0 1 264 388 L 264 432 A8,8 0 0 1 256 440 L 72 440 A8,8 0 0 1 64 432 L 64 388 A8,8 0 0 1 72 380" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="65" y="410">良いコミットと悪いコミットの中間のコ</text>
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="104" y="421">ミットをチェックアウト</text>
+  <path d="M 336 260 L 520 260 A8,8 0 0 1 528 268 L 528 312 A8,8 0 0 1 520 320 L 336 320 A8,8 0 0 1 328 312 L 328 268 A8,8 0 0 1 336 260" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="419" y="294">END</text>
+  <path d="M 336 380 L 520 380 A8,8 0 0 1 528 388 L 528 432 A8,8 0 0 1 520 440 L 336 440 A8,8 0 0 1 328 432 L 328 388 A8,8 0 0 1 336 380" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="344" y="415">make &amp;&amp; make modules_install</text>
+  <path d="M 600 380 L 784 380 A8,8 0 0 1 792 388 L 792 432 A8,8 0 0 1 784 440 L 600 440 A8,8 0 0 1 592 432 L 592 388 A8,8 0 0 1 600 380" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="680" y="414">boot</text>
+  <path d="M 864 380 L 1048 380 A8,8 0 0 1 1056 388 L 1056 432 A8,8 0 0 1 1048 440 L 864 440 A8,8 0 0 1 856 432 L 856 388 A8,8 0 0 1 864 380" fill="rgb(255,255,255)" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="944" y="414">test</text>
+  <path d="M 164 100 L 164 132" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,139 160,132 168,132 164,139" stroke="rgb(0,0,0)" />
+  <path d="M 164 200 L 164 224" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,231 160,224 168,224 164,231" stroke="rgb(0,0,0)" />
+  <path d="M 272 290 L 320 290" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="327,290 320,286 320,294 327,290" stroke="rgb(0,0,0)" />
+  <path d="M 164 348 L 164 372" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,379 160,372 168,372 164,379" stroke="rgb(0,0,0)" />
+  <path d="M 264 410 L 320 410" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="327,410 320,406 320,414 327,410" stroke="rgb(0,0,0)" />
+  <path d="M 164 200 L 164 224" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,231 160,224 168,224 164,231" stroke="rgb(0,0,0)" />
+  <path d="M 272 290 L 320 290" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="327,290 320,286 320,294 327,290" stroke="rgb(0,0,0)" />
+  <path d="M 164 348 L 164 372" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,379 160,372 168,372 164,379" stroke="rgb(0,0,0)" />
+  <path d="M 264 410 L 320 410" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="327,410 320,406 320,414 327,410" stroke="rgb(0,0,0)" />
+  <path d="M 528 410 L 584 410" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="591,410 584,406 584,414 591,410" stroke="rgb(0,0,0)" />
+  <path d="M 792 410 L 848 410" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="855,410 848,406 848,414 855,410" stroke="rgb(0,0,0)" />
+  <path d="M 1056 410 L 1072 410" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 1072 410 L 1072 225" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 164 225 L 1072 225" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 164 225 L 164 224" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,231 160,224 168,224 164,231" stroke="rgb(0,0,0)" />
+  <path d="M 792 410 L 848 410" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="855,410 848,406 848,414 855,410" stroke="rgb(0,0,0)" />
+  <path d="M 1056 410 L 1072 410" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 1072 410 L 1072 225" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 164 225 L 1072 225" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 164 225 L 164 224" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="164,231 160,224 168,224 164,231" stroke="rgb(0,0,0)" />
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="60" x="266" y="253" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="274" y="265">ない場合</text>
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="60" x="200" y="363" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="208" y="375">ある場合</text>
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="60" x="266" y="253" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="274" y="265">ない場合</text>
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="60" x="200" y="363" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="208" y="375">ある場合</text>
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="62" x="1041" y="363" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="1049" y="375">結果 ...</text>
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="62" x="1041" y="363" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="1049" y="375">結果 ...</text>
+  <rect fill="none" height="80" stroke="rgb(119,119,255)" stroke-dasharray="12" stroke-width="3" width="480" x="584" y="370" />
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="16" font-style="normal" font-weight="normal" x="124" y="137">git bisect</text>
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="16" font-style="normal" font-weight="normal" x="648" y="377">Test Script</text>
+  <text fill="rgb(0,0,0)" font-family="sansserif" font-size="11" font-style="normal" font-weight="normal" x="812" y="374">qemu</text>
+</svg>

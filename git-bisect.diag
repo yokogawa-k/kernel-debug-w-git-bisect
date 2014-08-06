@@ -1,0 +1,57 @@
+// vi: set ts=4 sw=4 sts=0 et:
+
+
+blockdiag {
+    default_shape = roundedbox;
+    node_width = 200;
+    node_height = 60;
+
+
+    setup [ label = "良いコミットと悪いコミットを指定" ];
+    check [ shape = "diamond", height = 100 ]
+    check [ label = "良いコミットと悪いコミットの間にコミットがあるかどうか確認" ];
+    checkout [ label = "良いコミットと悪いコミットの中間のコミットをチェックアウト" ];
+    build [ label = "make && make modules_install" ];
+
+    START -> setup;
+    setup -> check;
+    check -> checkout [ label = "ある場合" ];
+    checkout -> build;
+    build -> boot -> test;
+    test -> check [ label = "結果を通知" ];
+    check -> END [ label = "ない場合" ];
+
+    group {
+        orientation = portrait;
+        color = "#FFFFFF";
+        START;
+        group {
+            label = "git bisect"
+            fontsize = 16;
+            color = lightblue;
+            setup;
+            check;
+            checkout;
+        }
+    }
+
+
+    group {
+        label = "Test Script";
+        fontsize = 16;
+        color = "#77FF77";
+        height = 100;
+        build;
+        boot;
+        test;
+        group {
+            label = qemu;
+            shape = line;
+            style = dashed;
+            color = "#7777FF";
+            boot;
+            test;
+        }
+    }
+
+}
