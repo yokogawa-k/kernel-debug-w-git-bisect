@@ -27,7 +27,7 @@
 
 やってることはこんな感じ。
 
-![git-bisect](static/git-bisect.svg)
+![git-bisect](static/git-bisect.png)
 
 `git bisect run` を使えば、これが自動で行われる。
 
