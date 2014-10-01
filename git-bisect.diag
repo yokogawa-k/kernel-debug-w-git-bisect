@@ -3,12 +3,13 @@
 
 blockdiag {
     default_shape = roundedbox;
-    node_width = 200;
-    node_height = 60;
+    node_width = 300;
+    node_height = 90;
+    default_fontsize = 18;
 
 
     setup [ label = "良いコミットと悪いコミットを指定" ];
-    check [ shape = "diamond", height = 100 ]
+    check [ shape = "diamond", height = 150 ]
     check [ label = "良いコミットと悪いコミットの間にコミットがあるかどうか確認" ];
     checkout [ label = "良いコミットと悪いコミットの中間のコミットをチェックアウト" ];
     build [ label = "make && make modules_install" ];
@@ -27,7 +28,7 @@ blockdiag {
         START;
         group {
             label = "git bisect"
-            fontsize = 16;
+            default_fontsize = 18;
             color = lightblue;
             setup;
             check;
@@ -38,9 +39,9 @@ blockdiag {
 
     group {
         label = "Test Script";
-        fontsize = 16;
+        default_fontsize = 18;
         color = "#77FF77";
-        height = 100;
+        height = 150;
         build;
         boot;
         test;
